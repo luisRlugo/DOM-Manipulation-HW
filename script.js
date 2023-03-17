@@ -32,17 +32,79 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // Part 3
   //Select DOM's Favorite Things list and remove the last list item
-  const fav = document.getElementById("favorite-things");
+  const favorite = document.getElementById("favorite-things");
+  favorite.removeChild(favorite.lastElementChild);
 
   // Part 4
+  // Select all .special-title class elements and change their font-sizeto 2rem.
+  //Remember you might have to iterate through the list of elements
+  const special = document.querySelectorAll(".special-title");
+  special.forEach((letter, i) => {
+    letter.style.fontSize = "2rem";
+  });
 
   // Part 5
+  //Turns out DOM never raced in Chicago. Access the Past Races list and remove Chicago.
+  const past = document.getElementById("past-races");
+  // past.getElementById.remove("chicago");
+  past.remove("Chicago");
+
+  /**Creating New DOM Elements */
 
   // Part 6
+  // Let's add to DOM's Past Races list. Create a new <li> element,
+  // change the new <li> text to the name of a city, and append it to the Past Races list.
+
+  const newEl = document.createElement("li");
+  const paris = "Paris";
+  newEl.textContent = paris;
+  past.appendChild(newEl);
 
   // Part 7
+  // Create a new .blog-post corresponding to the new city added in Part 6.
+  // You will have to create a new <div> with class of .blog-post, a new <h2> with text, and a new <p> with some text.
+  // Think about what order you want to create the elements, and what order you want to append them in.
+  const newblogPost = document.createElement("div");
+  newblogPost.classList.add("blog-post purple");
+
+  const newH2 = document.createElement("h2");
+  newH2.innerText = "Miami";
+
+  const newP = document.createElement("p");
+  newP.innerText = "I Live for this!";
+  newP.appendChild(newP);
+
+  /**Event Handlers */
 
   // Part 8
+  // When you reload the page, the script.js file loads a random DOM quote.
+  // Let's play with the included function:
+
+  // const randomQuote = function () {
+  //   document.querySelector("#quote-of-the-day").innerText = `"${
+  //     quotes[Math.floor(Math.random() * quotes.length)]
+  //   }"`;
+  // };
+
+  // Query select the #quote-title ID element and add a click event handler.
+  // That event handler should use the function randomQuote whenever #quote-title is clicked.
+  this.querySelector("#quote-title").addEventListener("click");
 
   // Part 9
+  // Select all .blog-post class elements.
+  // Iterate through the list of .blog-post class elements
+  // and apply two event handlers to each node.
+  // The first event handler should be listening for mouseout events
+  //while the second handler should be listening for mouseenter events.
+
+  // The mouseout handler should toggle the class .purple
+  // The mouseenter handler should toggle the class .red
+  const blogPosts = document.querySelectorAll(".blog-post");
+  blogPosts.forEach((post, i) => {
+    post.addEventListener("mouseout", (event) => {});
+  });
+  // Test it out!
+
+  // Hint:
+  // Remember the document node property .classList and the document node method .toggle()
 });
