@@ -45,9 +45,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // Part 5
   //Turns out DOM never raced in Chicago. Access the Past Races list and remove Chicago.
+
   const past = document.getElementById("past-races");
-  // past.getElementById.remove("chicago");
-  past.remove("Chicago");
+  let chicago;
+  for (let word of past.children) {
+    if (word.textContent == "Chicago") {
+      chicago = word;
+    }
+  }
+  past.removeChild(chicago);
 
   /**Creating New DOM Elements */
 
@@ -65,14 +71,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // You will have to create a new <div> with class of .blog-post, a new <h2> with text, and a new <p> with some text.
   // Think about what order you want to create the elements, and what order you want to append them in.
   const newblogPost = document.createElement("div");
-  newblogPost.classList.add("blog-post purple");
+  newblogPost.classList.add("blog-post");
 
-  const newH2 = document.createElement("h2");
-  newH2.innerText = "Miami";
+  const newH1 = document.createElement("h1");
+  newH1.textContent = "Miami";
 
   const newP = document.createElement("p");
-  newP.innerText = "I Live for this!";
-  newP.appendChild(newP);
+  newP.textContent = "I Live for this!";
+
+  newblogPost.appendChild(newH1);
+  newblogPost.appendChild(newP);
+
+  document.querySelector(".main").appendChild(newblogPost);
 
   /**Event Handlers */
 
@@ -88,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // Query select the #quote-title ID element and add a click event handler.
   // That event handler should use the function randomQuote whenever #quote-title is clicked.
-  this.querySelector("#quote-title").addEventListener("click");
+  this.querySelector("#quote-title").addEventListener("click", randomQuote);
 
   // Part 9
   // Select all .blog-post class elements.
@@ -100,9 +110,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // The mouseout handler should toggle the class .purple
   // The mouseenter handler should toggle the class .red
   const blogPosts = document.querySelectorAll(".blog-post");
-  blogPosts.forEach((post, i) => {
-    post.addEventListener("mouseout", (event) => {});
+  blogPosts.forEach((post) => {
+    post.addEventListener("mouseout", () => {
+      post.classList.toggle("purple");
+    });
+    post.addEventListener("mousenter", () => {
+      post.classList.toggle("red");
+    });
   });
+
   // Test it out!
 
   // Hint:
