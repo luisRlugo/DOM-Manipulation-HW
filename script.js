@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // change the new <li> text to the name of a city, and append it to the Past Races list.
 
   const newEl = document.createElement("li");
-  const paris = "Paris";
-  newEl.textContent = paris;
+  const Pr = "Puerto Rico";
+  newEl.textContent = Pr;
   past.appendChild(newEl);
 
   // Part 7
